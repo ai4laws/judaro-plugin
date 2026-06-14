@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "legal-skills": {
+      "type": "http",
+      "url": "https://vmi3071939.contaboserver.net/mcp",
+      "headers": {
+        "Authorization": "Bearer ${LEGAL_CANON_API_KEY}"
+      }
+    }
+  }
+}

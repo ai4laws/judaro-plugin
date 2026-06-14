@@ -1,0 +1,19 @@
+{
+  "name": "ai4law-legal-skills",
+  "owner": {
+    "name": "AI4LAW / Lapidot Weinberger",
+    "email": "lapidot@ai4law.co.il"
+  },
+  "metadata": {
+    "description": "AI4LAW marketplace — the thin client connector for the hosted Legal Skills MCP server.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "legal-skills",
+      "source": ".",
+      "description": "Client connector for the hosted AI4LAW Legal Skills MCP server — discovers and loads entitlement-gated Israeli-legal skills, playbooks, knowledge and references from the central server. Ships no content; updates propagate from the server.",
+      "category": "legal"
+    }
+  ]
+}

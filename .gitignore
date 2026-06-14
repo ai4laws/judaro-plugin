@@ -1,0 +1,6 @@
+# Local, client-side personalization — never commit (may hold firm-specific notes)
+personalization.md
+
+# macOS / exFAT AppleDouble sidecar files
+._*
+.DS_Store
