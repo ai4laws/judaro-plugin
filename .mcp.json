@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "legal-skills-oauth": {
+      "type": "http",
+      "url": "https://vmi3071939.contaboserver.net/mcp"
+    }
+  }
+}
