@@ -57,3 +57,47 @@ The server is **read-only** content delivery. Your matter/client data never leav
 machine — keep it in local working files and in `personalization.md`, not on the server.
 Signing in shares only your verified email (used to look up your entitlements); no matter
 data is ever sent to the server.
+
+## Advanced: targeting a different server (developers only)
+
+> **Lawyers can ignore this section.** If you set nothing, the plugin connects to the
+> AI4LAW **production** server automatically — the default URL is baked into `.mcp.json`.
+
+The connector reads its target from the `LSMCP_SERVER_URL` environment variable, falling
+back to the production server when it is unset:
+
+```jsonc
+// .mcp.json
+"url": "${LSMCP_SERVER_URL:-https://vmi3071939.contaboserver.net/mcp}"
+```
+
+So `LSMCP_SERVER_URL` lets a developer point the *same* installed plugin at a staging or
+dev server for a session, without editing any tracked file and without affecting other
+users. Set it in any one of these places (Claude Code expands `${VAR}` / `${VAR:-default}`
+in the `.mcp.json` `url` field at startup):
+
+- **Shell, per session** — export it before launching Claude Code:
+  ```bash
+  export LSMCP_SERVER_URL="https://staging-mcp.judaro.com/mcp"
+  claude
+  ```
+- **Project `.env`** — if you run Claude Code from a project whose env is loaded, add:
+  ```dotenv
+  LSMCP_SERVER_URL=https://staging-mcp.judaro.com/mcp
+  ```
+- **`~/.claude/settings.json`** `env` block — persistent across sessions for your account:
+  ```jsonc
+  {
+    "env": {
+      "LSMCP_SERVER_URL": "https://staging-mcp.judaro.com/mcp"
+    }
+  }
+  ```
+
+Unset it (or remove the override) to return to the production default. Restart Claude Code
+after changing the value so the connector re-reads it.
+
+**Fallbacks** if `${VAR}` expansion is unavailable on your Claude Code version: use a
+**project-scoped `.mcp.json`** that hard-codes the alternate `url` (it shadows the bundled
+one for that project), or hard-edit the `url` locally for a throwaway test. Do **not** commit
+either change.

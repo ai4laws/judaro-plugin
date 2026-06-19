@@ -1,0 +1,66 @@
+# gitleaks configuration for the legal-skills client plugin (PUBLIC repo).
+#
+# This repo is public and ships NO secrets by design — connecting is keyless
+# (WorkOS OAuth). Still, secret hygiene matters most on a public repo, so we
+# extend gitleaks' built-in ruleset with rules for this project's own secret
+# shapes (mirroring the server repo) plus an allowlist for obvious placeholders.
+#
+# Scope note: in CI this config is used by gitleaks-action, which scans the PR /
+# push DIFF (not full history). We deliberately do not configure a full-history
+# rescan in the gating job.
+
+title = "legal-skills-plugin gitleaks config"
+
+# Inherit all of gitleaks' default rules (AWS keys, GitHub tokens, private keys,
+# generic high-entropy assignments, etc.) and add ours below.
+[extend]
+useDefault = true
+
+# --- Project-specific secret shapes ----------------------------------------
+
+[[rules]]
+id = "lcsk-api-key"
+description = "Legal Skills MCP lcsk_ API key"
+# Raw keys are shown once at creation and stored only as SHA-256 hashes; a raw
+# lcsk_ key in a commit is a leak. The plugin connects keyless, so a real lcsk_
+# key should never appear here at all.
+regex = '''lcsk_[A-Za-z0-9_-]{20,}'''
+keywords = ["lcsk_"]
+[rules.allowlist]
+# Obvious non-secret placeholders / examples used in docs.
+regexes = [
+  '''lcsk_not_a_real_key''',
+  '''lcsk_xxxxxxxx''',
+  '''lcsk_your-key''',
+  '''lcsk_\.\.\.''',
+  '''lcsk_<[^>]+>''',
+]
+
+[[rules]]
+id = "workos-secret-key"
+description = "WorkOS Secret key (sk_test_ / sk_live_)"
+# Server-to-server WorkOS keys live ONLY in the server .env — they must never
+# appear in this public client repo.
+regex = '''sk_(test|live)_[A-Za-z0-9]{20,}'''
+keywords = ["sk_test_", "sk_live_"]
+[rules.allowlist]
+regexes = [
+  '''sk_test_dummy''',
+  '''sk_(test|live)_\.\.\.''',
+  '''sk_(test|live)_xxx''',
+  '''sk_(test|live)_your''',
+]
+
+# --- Global allowlist -------------------------------------------------------
+# Files that are, by design, examples / placeholder-bearing docs.
+[allowlist]
+description = "Example configs and placeholder-only docs"
+paths = [
+  '''personalization\.example\.md''',
+]
+# Documentation placeholders use ellipsis / backtick forms; allow those tokens
+# globally so a markdown example like `sk_test_…` never trips the gate.
+regexes = [
+  '''sk_(test|live)_(…|\.\.\.|<[^>]+>)''',
+  '''lcsk_(…|\.\.\.|<[^>]+>|xxxxxxxx|your-key|not_a_real_key)''',
+]

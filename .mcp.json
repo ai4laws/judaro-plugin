@@ -2,7 +2,7 @@
   "mcpServers": {
     "legal-skills-oauth": {
       "type": "http",
-      "url": "https://vmi3071939.contaboserver.net/mcp"
+      "url": "${LSMCP_SERVER_URL:-https://vmi3071939.contaboserver.net/mcp}"
     }
   }
 }

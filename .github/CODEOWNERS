@@ -1,0 +1,15 @@
+# Code owners for the legal-skills client plugin (the PUBLIC connector repo).
+#
+# The connector config is the live surface every installed lawyer hits, so
+# changes to it require review from @roysahar11.
+#
+# NOTE: "require code owner review" is a branch-protection toggle applied
+# separately by the maintainer; this file only declares the owners.
+
+# Connector configuration — the live, installed surface.
+/.mcp.json                      @roysahar11
+/.claude-plugin/marketplace.json @roysahar11
+/.claude-plugin/plugin.json     @roysahar11
+
+# CI, security config, and code owners themselves.
+/.github/                       @roysahar11
