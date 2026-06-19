@@ -1,6 +1,6 @@
 {
   "name": "legal-skills",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Client connector for the hosted AI4LAW Legal Skills MCP server. Discovers and loads entitlement-gated Israeli-legal skills, playbooks, knowledge and references from the central server — nothing is stored locally.",
   "author": {
     "name": "Lapidot Weinberger",

@@ -29,9 +29,9 @@ gated at the server by your authenticated account, not by who can read this conn
    /plugin install legal-skills@ai4law-legal-skills
    ```
 
-3. **Restart Claude Code** so the connector loads (approve the `legal-skills-oauth` server if prompted).
+3. **Restart Claude Code** so the connector loads (approve the `legal-skills` server if prompted).
 
-4. **Connect — sign in once.** Run `/mcp`, select **`legal-skills-oauth`**, and choose
+4. **Connect — sign in once.** Run `/mcp`, select **`legal-skills`**, and choose
    **Authenticate**. A browser window opens — sign in with your AI4LAW-registered email and
    approve access. (Claude may also offer to connect automatically the first time you ask a
    legal question.) The login is remembered, so you only do this once per machine.
