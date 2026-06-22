@@ -38,17 +38,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          # gitleaks-action scans the PR / push diff by default; no full history
-          # needed (and we deliberately do NOT force a full-history rescan — see
-          # .gitleaks.toml). fetch-depth: 0 only matters for full scans.
-          fetch-depth: 0
 
-      - name: gitleaks
-        # Pinned to gitleaks-action v2.3.9 by commit SHA (third-party action).
-        uses: gitleaks/gitleaks-action@ff98106e4c7b2bc287b24eaf42907196329070c7
-        env:
-          # Scan the PR diff on pull_request and the pushed range on push — this is
-          # the action's default behavior; we are explicit about not forcing a full
-          # rescan so a historical placeholder can never turn this gate permanently red.
-          GITLEAKS_CONFIG: ${{ github.workspace }}/.gitleaks.toml
+      - name: Run gitleaks (binary — no org license required)
+        # The gitleaks GitHub *Action* requires a paid license for GitHub
+        # organizations (even on public repos); the gitleaks *binary* is MIT and
+        # needs no license. Pin a release and scan the working tree on disk.
+        run: |
+          set -euo pipefail
+          VER=8.18.4
+          curl -sSL "https://github.com/gitleaks/gitleaks/releases/download/v${VER}/gitleaks_${VER}_linux_x64.tar.gz" -o /tmp/gitleaks.tar.gz
+          tar -xzf /tmp/gitleaks.tar.gz -C /tmp gitleaks
+          /tmp/gitleaks detect --no-git --source . --config .gitleaks.toml --redact --verbose
