@@ -2,7 +2,7 @@
   "hooks": {
     "PostToolUseFailure": [
       {
-        "matcher": "mcp__.*legal-skills.*",
+        "matcher": "mcp__.*(legal-skills|judaro).*",
         "hooks": [
           {
             "type": "command",
