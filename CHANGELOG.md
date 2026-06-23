@@ -1,18 +1,19 @@
 # Changelog
 
-Notable changes to the Legal Skills client plugin. See `git log` for full history.
+Notable changes to the Judaro client plugin. See `git log` for full history.
 
 To update: in Claude Code run `/plugin marketplace update ai4law-legal-skills`
-then `/plugin update legal-skills@ai4law-legal-skills` (or use the `/plugin` → Installed → Update menu).
+then `/plugin update judaro@ai4law-legal-skills` (or use the `/plugin` → Installed → Update menu).
 
-## Unreleased
+## 0.3.0 — production cutover (Judaro)
 ### Changed
-- The connector target server is now overridable per session via the `LSMCP_SERVER_URL`
-  environment variable, with the production server as the default
-  (`"url": "${LSMCP_SERVER_URL:-https://vmi3071939.contaboserver.net/mcp}"`). Installed
-  users who set nothing are unaffected — they keep hitting the same production server.
-  See README → *Advanced: targeting a different server*. No version bump: this changes
-  no default, so installed plugins are not prompted to update.
+- **Renamed to Judaro.** The plugin is now `judaro` and the MCP connector key is `judaro`
+  (was `legal-skills` / `legal-skills-oauth`). **This requires a one-time re-Connect:** after
+  updating, run `/mcp`, select **`judaro`**, and authenticate once.
+- **Repointed to the production server `https://mcp.judaro.com/mcp`** (was the interim Contabo
+  host `vmi3071939`). Still overridable per session via the `LSMCP_SERVER_URL` environment
+  variable (`"url": "${LSMCP_SERVER_URL:-https://mcp.judaro.com/mcp}"`); unset it to use the
+  production default. See README → *Advanced: targeting a different server*.
 
 ### Added
 - Repo hardening (mirrors the server repo): `.github/workflows/ci.yml` (validates the

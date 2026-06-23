@@ -1,8 +1,8 @@
 {
   "mcpServers": {
-    "legal-skills-oauth": {
+    "judaro": {
       "type": "http",
-      "url": "${LSMCP_SERVER_URL:-https://vmi3071939.contaboserver.net/mcp}"
+      "url": "${LSMCP_SERVER_URL:-https://mcp.judaro.com/mcp}"
     }
   }
 }
