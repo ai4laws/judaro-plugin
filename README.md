@@ -1,4 +1,4 @@
-# Legal Skills — client plugin (AI4LAW)
+# Judaro — Legal Skills client plugin (AI4LAW)
 
 A **thin** Claude Code plugin that connects to the hosted AI4LAW Legal Skills MCP server.
 It ships **no legal content** — every skill, playbook, knowledge doc and reference is served
@@ -26,12 +26,12 @@ gated at the server by your authenticated account, not by who can read this conn
 2. **Install the plugin** in Claude Code:
    ```text
    /plugin marketplace add ai4laws/legal-skills-plugin
-   /plugin install legal-skills@ai4law-legal-skills
+   /plugin install judaro@ai4law-legal-skills
    ```
 
-3. **Restart Claude Code** so the connector loads (approve the `legal-skills-oauth` server if prompted).
+3. **Restart Claude Code** so the connector loads (approve the `judaro` server if prompted).
 
-4. **Connect — sign in once.** Run `/mcp`, select **`legal-skills-oauth`**, and choose
+4. **Connect — sign in once.** Run `/mcp`, select **`judaro`**, and choose
    **Authenticate**. A browser window opens — sign in with your AI4LAW-registered email and
    approve access. (Claude may also offer to connect automatically the first time you ask a
    legal question.) The login is remembered, so you only do this once per machine.
@@ -57,3 +57,47 @@ The server is **read-only** content delivery. Your matter/client data never leav
 machine — keep it in local working files and in `personalization.md`, not on the server.
 Signing in shares only your verified email (used to look up your entitlements); no matter
 data is ever sent to the server.
+
+## Advanced: targeting a different server (developers only)
+
+> **Lawyers can ignore this section.** If you set nothing, the plugin connects to the
+> AI4LAW **production** server automatically — the default URL is baked into `.mcp.json`.
+
+The connector reads its target from the `LSMCP_SERVER_URL` environment variable, falling
+back to the production server when it is unset:
+
+```jsonc
+// .mcp.json
+"url": "${LSMCP_SERVER_URL:-https://mcp.judaro.com/mcp}"
+```
+
+So `LSMCP_SERVER_URL` lets a developer point the *same* installed plugin at a staging or
+dev server for a session, without editing any tracked file and without affecting other
+users. Set it in any one of these places (Claude Code expands `${VAR}` / `${VAR:-default}`
+in the `.mcp.json` `url` field at startup):
+
+- **Shell, per session** — export it before launching Claude Code:
+  ```bash
+  export LSMCP_SERVER_URL="https://vmi3384905.contaboserver.net/mcp"
+  claude
+  ```
+- **Project `.env`** — if you run Claude Code from a project whose env is loaded, add:
+  ```dotenv
+  LSMCP_SERVER_URL=https://vmi3384905.contaboserver.net/mcp
+  ```
+- **`~/.claude/settings.json`** `env` block — persistent across sessions for your account:
+  ```jsonc
+  {
+    "env": {
+      "LSMCP_SERVER_URL": "https://vmi3384905.contaboserver.net/mcp"
+    }
+  }
+  ```
+
+Unset it (or remove the override) to return to the production default. Restart Claude Code
+after changing the value so the connector re-reads it.
+
+**Fallbacks** if `${VAR}` expansion is unavailable on your Claude Code version: use a
+**project-scoped `.mcp.json`** that hard-codes the alternate `url` (it shadows the bundled
+one for that project), or hard-edit the `url` locally for a throwaway test. Do **not** commit
+either change.

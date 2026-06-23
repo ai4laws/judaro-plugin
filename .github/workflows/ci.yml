@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# Default to least privilege; jobs opt into more only if they need it.
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  json:
+    name: validate-json
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate connector config is well-formed JSON
+        # This is a content-free thin client: the whole product surface is these
+        # three JSON files, so a parse check is the meaningful gate here.
+        run: |
+          set -euo pipefail
+          for f in .mcp.json .claude-plugin/marketplace.json .claude-plugin/plugin.json; do
+            echo "Validating $f"
+            python3 -c "import json,sys; json.load(open(sys.argv[1]))" "$f"
+          done
+          echo "All connector config files are valid JSON."
+
+  secrets:
+    name: secrets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run gitleaks (binary — no org license required)
+        # The gitleaks GitHub *Action* requires a paid license for GitHub
+        # organizations (even on public repos); the gitleaks *binary* is MIT and
+        # needs no license. Pin a release and scan the working tree on disk.
+        run: |
+          set -euo pipefail
+          VER=8.18.4
+          curl -sSL "https://github.com/gitleaks/gitleaks/releases/download/v${VER}/gitleaks_${VER}_linux_x64.tar.gz" -o /tmp/gitleaks.tar.gz
+          tar -xzf /tmp/gitleaks.tar.gz -C /tmp gitleaks
+          /tmp/gitleaks detect --no-git --source . --config .gitleaks.toml --redact --verbose

@@ -5,14 +5,14 @@
     "email": "lapidot@ai4law.co.il"
   },
   "metadata": {
-    "description": "AI4LAW marketplace — the thin client connector for the hosted Legal Skills MCP server.",
-    "version": "0.2.0"
+    "description": "AI4LAW marketplace — the thin Judaro client connector for the hosted Legal Skills MCP server.",
+    "version": "0.3.0"
   },
   "plugins": [
     {
-      "name": "legal-skills",
+      "name": "judaro",
       "source": ".",
-      "description": "Client connector for the hosted AI4LAW Legal Skills MCP server — discovers and loads entitlement-gated Israeli-legal skills, playbooks, knowledge and references from the central server. Ships no content; updates propagate from the server.",
+      "description": "Judaro — client connector for the hosted AI4LAW Legal Skills MCP server. Discovers and loads entitlement-gated Israeli-legal skills, playbooks, knowledge and references from the central server. Ships no content; updates propagate from the server.",
       "category": "legal"
     }
   ]
