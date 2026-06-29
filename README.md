@@ -18,7 +18,7 @@ gated at the server by your authenticated account, not by who can read this conn
   with `get_skill`, instead of dumping the whole catalog into context.
 - `personalization.example.md` — optional local customization (stays on your machine).
 
-## Install (per lawyer / per machine)
+## Install — individual user (default)
 
 1. **Ask AI4LAW to provision your account.** Access is by invitation — AI4LAW registers your
    email and the packages (legal domains) you're entitled to. You'll sign in with that same email.
@@ -44,6 +44,52 @@ gated at the server by your authenticated account, not by who can read this conn
 6. *(optional)* `cp personalization.example.md personalization.md` and fill in firm/style
    preferences — they stay on your machine.
 
+## Install — for an organization
+
+> For a single user, use **Install — individual user** above. This section is for admins
+> deploying Judaro across a whole organization.
+
+Team and Enterprise admins distribute the plugin from the **Claude admin console** (organization
+settings → plugins) — not with slash commands. When you add a marketplace via **GitHub syncing**,
+Claude requires the repo to be **private/internal**. Since this repo is public, create a **private
+copy** of it and point the admin console at that.
+
+1. **Make a private copy.** [Duplicate this repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/duplicating-a-repository)
+   into a private repo your organization owns. A mirror push does it:
+   ```bash
+   git clone --bare https://github.com/ai4laws/judaro-plugin.git
+   cd judaro-plugin.git
+   git push --mirror https://github.com/YOUR-ORG/YOUR-PRIVATE-COPY.git
+   ```
+   Then make one edit in your copy: org GitHub-sync rejects a relative-path plugin source, so set the
+   plugin `source` in `.claude-plugin/marketplace.json` to an **object** pointing at your copy:
+   ```json
+   "source": { "source": "github", "repo": "YOUR-ORG/YOUR-PRIVATE-COPY", "ref": "main" }
+   ```
+2. **Add it as a marketplace.** In the admin console, add a custom marketplace via **GitHub sync**
+   pointing at `YOUR-ORG/YOUR-PRIVATE-COPY`, then choose how the `judaro` plugin rolls out —
+   *Installed by default*, *Available for install*, *Not available*, or *Required* (Enterprise).
+   See [Manage plugins for your organization](https://support.claude.com/en/articles/13837433-manage-plugins-for-your-organization).
+3. **Enable the connector for the team.** Installing the plugin does **not** activate its MCP
+   connector. In **Organization settings → Connectors**, enable the Judaro connector (*"Add connector
+   to the team"*) — an **Owner / Primary-Owner-only** action that makes it **available org-wide**.
+   Each member still signs in individually (steps 4–5 above) before using it. See
+   [Authorize MCP connectors for your organization](https://support.claude.com/en/articles/15537633-authorize-mcp-connectors-for-your-entire-organization).
+4. **Stay current.** This connector changes rarely; to pull updates, sync your private copy from this
+   public repo, then re-sync in the admin console:
+   ```bash
+   git remote add upstream https://github.com/ai4laws/judaro-plugin.git   # one-time
+   git fetch upstream && git merge upstream/main && git push origin main
+   ```
+
+Entitlements are unchanged: each user signs in with their AI4LAW email and sees only what their
+account is entitled to.
+
+**Use the plugin, not a bare connector.** You *could* add `https://mcp.judaro.com/mcp` as a
+standalone custom connector, but installing the **plugin** is the recommended path: it bundles the
+connector together with the **legal-skill-selector** sub-agent and config, set up automatically and
+versioned together. A standalone connector exposes only the raw MCP tools, without the selector agent.
+
 ## Use
 - Ask for any Israeli-legal task (Hebrew or English). The **legal-skill-selector** agent
   browses the catalog by domain and returns the best-matching skill IDs.
@@ -57,47 +103,3 @@ The server is **read-only** content delivery. Your matter/client data never leav
 machine — keep it in local working files and in `personalization.md`, not on the server.
 Signing in shares only your verified email (used to look up your entitlements); no matter
 data is ever sent to the server.
-
-## Advanced: targeting a different server (developers only)
-
-> **Lawyers can ignore this section.** If you set nothing, the plugin connects to the
-> AI4LAW **production** server automatically — the default URL is baked into `.mcp.json`.
-
-The connector reads its target from the `LSMCP_SERVER_URL` environment variable, falling
-back to the production server when it is unset:
-
-```jsonc
-// .mcp.json
-"url": "${LSMCP_SERVER_URL:-https://mcp.judaro.com/mcp}"
-```
-
-So `LSMCP_SERVER_URL` lets a developer point the *same* installed plugin at a staging or
-dev server for a session, without editing any tracked file and without affecting other
-users. Set it in any one of these places (Claude Code expands `${VAR}` / `${VAR:-default}`
-in the `.mcp.json` `url` field at startup):
-
-- **Shell, per session** — export it before launching Claude Code:
-  ```bash
-  export LSMCP_SERVER_URL="https://vmi3384905.contaboserver.net/mcp"
-  claude
-  ```
-- **Project `.env`** — if you run Claude Code from a project whose env is loaded, add:
-  ```dotenv
-  LSMCP_SERVER_URL=https://vmi3384905.contaboserver.net/mcp
-  ```
-- **`~/.claude/settings.json`** `env` block — persistent across sessions for your account:
-  ```jsonc
-  {
-    "env": {
-      "LSMCP_SERVER_URL": "https://vmi3384905.contaboserver.net/mcp"
-    }
-  }
-  ```
-
-Unset it (or remove the override) to return to the production default. Restart Claude Code
-after changing the value so the connector re-reads it.
-
-**Fallbacks** if `${VAR}` expansion is unavailable on your Claude Code version: use a
-**project-scoped `.mcp.json`** that hard-codes the alternate `url` (it shadows the bundled
-one for that project), or hard-edit the `url` locally for a throwaway test. Do **not** commit
-either change.

@@ -2,7 +2,7 @@
   "mcpServers": {
     "judaro": {
       "type": "http",
-      "url": "${LSMCP_SERVER_URL:-https://mcp.judaro.com/mcp}"
+      "url": "https://mcp.judaro.com/mcp"
     }
   }
 }
