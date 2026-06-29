@@ -21,11 +21,16 @@ server repo). Install/use detail: `README.md`.
   them, and nothing matter-related goes to the server.
 
 ## Targeting a different server
-The connector reads `LSMCP_SERVER_URL`, falling back to production. Override it (shell env, project
-`.env`, or `~/.claude/settings.json` `env`) to point at dev (`…contaboserver.net:8443/mcp`) or
-staging for a session — see README's "Advanced: targeting a different server". Claude Code expands
-`${VAR}` / `${VAR:-default}` in the `.mcp.json` **`url`** field (expansion works there; the known
-substitution bug is headers-only — CC #51581 / #6204).
+The `.mcp.json` `url` is a **literal** production URL, **not** `${LSMCP_SERVER_URL:-…}`: the claude.ai /
+desktop **connector** UI pastes the `url` verbatim and does not expand `${VAR}`, so an env-var form
+yields an invalid URL and breaks the org *"Add connector to the team"* step. A literal URL is the only
+form that works everywhere.
+
+To target dev/staging **in Claude Code (CLI)**, drop a project-scoped `.mcp.json` defining a `judaro`
+server with the alternate `url`: project scope outranks plugin-provided servers, so it replaces the
+bundled one for that project (claude.ai/desktop connectors are lowest precedence and don't affect the
+CLI). This does **not** change the desktop/web **connector** — that URL is set in claude.ai org
+settings. Internal dev/staging URLs + a ready snippet live in `CLAUDE.local.md` (local, not public).
 
 ## Cross-repo
 The server is the private repo `ai4laws/legal-skills-mcp` — authoritative for content, architecture,
