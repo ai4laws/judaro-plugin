@@ -11,7 +11,7 @@
   "plugins": [
     {
       "name": "judaro",
-      "source": ".",
+      "source": { "source": "github", "repo": "ai4laws/judaro-plugin-ai4laws", "ref": "main" },
       "description": "Judaro — client connector for the hosted AI4LAW Legal Skills MCP server. Discovers and loads entitlement-gated Israeli-legal skills, playbooks, knowledge and references from the central server. Ships no content; updates propagate from the server.",
       "category": "legal"
     }
