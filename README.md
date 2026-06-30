@@ -16,6 +16,8 @@ gated at the server by your authenticated account, not by who can read this conn
 - `agents/legal-skill-selector.md` — a sub-agent that finds the right skill by browsing the
   catalog (`list_domains` → `list_skills`) and hands the main agent a short shortlist to load
   with `get_skill`, instead of dumping the whole catalog into context.
+- `skills/feedback/` — the `/judaro:feedback` skill: a one-step way to report a problem or send
+  feedback (see **Feedback** below).
 - `personalization.example.md` — optional local customization (stays on your machine).
 
 ## Install — individual user (default)
@@ -97,6 +99,17 @@ versioned together. A standalone connector exposes only the raw MCP tools, witho
   the exact `get_playbook` / `get_knowledge` / `get_reference` / `download_file` calls for the
   supporting material.
 - You only ever see skills your account is entitled to.
+
+## Feedback (beta)
+Judaro is in **beta** — please tell us whenever a result is wrong, outdated, missing, or just not
+what you expected. It takes a moment and directly improves what you get.
+- Run **`/judaro:feedback`** any time, or just say (in Hebrew or English) that an answer was wrong
+  or that you want to report something — Claude will offer to summarize the issue and hand you a
+  link to a short form.
+- The server also reminds you of this when you load a skill or hit an access error, so the option
+  is always at hand without nagging.
+- **Privacy:** feedback never includes your client/matter details unless you explicitly add them,
+  and nothing is sent automatically — you always review and submit the form yourself.
 
 ## Privacy
 The server is **read-only** content delivery. Your matter/client data never leaves your

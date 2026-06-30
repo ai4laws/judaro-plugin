@@ -5,6 +5,15 @@ Notable changes to the Judaro client plugin. See `git log` for full history.
 To update: in Claude Code run `/plugin marketplace update ai4law-legal-skills`
 then `/plugin update judaro@ai4law-legal-skills` (or use the `/plugin` → Installed → Update menu).
 
+## 0.4.0 — beta feedback
+### Added
+- **`/judaro:feedback` skill** (`skills/feedback/`) — a one-step, Hebrew-facing way to report a
+  problem or send feedback. It is also model-invocable: when you say an answer was wrong/unexpected
+  or ask to report something, Claude offers to summarize the issue and hand you a pre-filled link
+  (preferring the server's context-tagged `feedback.report_url` when present). Nothing is ever sent
+  automatically, and matter/client details are never included unless you add them. README →
+  *Feedback (beta)*.
+
 ## 0.3.0 — production cutover (Judaro)
 ### Changed
 - **Renamed to Judaro.** The plugin is now `judaro` and the MCP connector key is `judaro`
