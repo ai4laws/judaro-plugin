@@ -27,10 +27,10 @@ If you have not, you do not yet have a basis to answer.
 **1. The server is unavailable / a tool errors / the connector is missing.**
 You cannot reach the canon. Do **not** answer from your own knowledge and do **not** fabricate.
 Tell the user. For example:
-- EN: "I can't reach the AI4LAW legal canon right now (the server is unreachable or erroring),
+- EN: "I can't reach the Judaro legal canon right now (the server is unreachable or erroring),
   so I can't ground this in the firm-approved material. I won't guess Israeli law from memory.
   Let's retry once it's back, or check the connection."
-- HE: "אין לי כרגע גישה למאגר המשפטי של AI4LAW (השרת אינו זמין או מחזיר שגיאה), ולכן אני לא
+- HE: "אין לי כרגע גישה למאגר המשפטי של Judaro (השרת אינו זמין או מחזיר שגיאה), ולכן אני לא
   יכול לבסס את התשובה על החומר המאושר של המשרד. לא אנחש מהזיכרון בנושא משפטי — נסה שוב כשהשירות
   יחזור, או בדוק את החיבור."
 

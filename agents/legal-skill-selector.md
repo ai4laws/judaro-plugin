@@ -9,7 +9,6 @@ description: >
   Israeli-legal drafting / checklist / intake / caselaw / analysis task, "which skill
   should I use", "find a skill for…".
 model: sonnet
-tools: ["mcp__plugin_judaro_judaro__list_domains", "mcp__plugin_judaro_judaro__list_skills"]
 ---
 
 # Legal Skill Selector
