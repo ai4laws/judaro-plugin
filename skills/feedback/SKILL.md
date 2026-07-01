@@ -23,7 +23,7 @@ chore. Speak to the user in **Hebrew** (their default), briefly.
 3. **Give them the report link:**
    - If a Judaro tool result earlier in this conversation included a `feedback.report_url`,
      **use that link** — it is already pre-filled with the skill/topic and environment. Prefer it.
-   - Otherwise use the form: **__JUDARO_FEEDBACK_FORM_URL__**
+   - Otherwise use the form: **https://docs.google.com/forms/d/e/1FAIpQLSfC6AL0CqzIMIe3cPzGYLQQ9dLfHFD3N-S1hqSX-tpkXgh83A/viewform**
 4. Mention they can also attach a screenshot or a short screen recording in the form, if useful.
 
 ## Rules (important)
