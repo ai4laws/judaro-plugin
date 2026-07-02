@@ -11,6 +11,9 @@ server repo). Install/use detail: `README.md`.
 - `.claude-plugin/{plugin.json,marketplace.json}` — plugin + marketplace manifests.
 - `agents/legal-skill-selector.md` — sub-agent that browses the catalog (`list_domains` →
   `list_skills`) and returns a shortlist for the main agent to load with `get_skill`.
+- `skills/feedback/SKILL.md` — the `/judaro:feedback` skill (beta feedback; also model-invocable).
+  Prefers the server's pre-filled `feedback.report_url`, else the static Google Form URL baked in here
+  (public-safe — the form link is non-secret).
 - `personalization.example.md` — optional local customization (copy to `personalization.md`).
 
 ## Invariants
