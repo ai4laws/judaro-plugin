@@ -13,8 +13,12 @@ server repo). Install/use detail: `README.md`.
   `list_skills`) and returns a shortlist for the main agent to load with `get_skill`.
 - `skills/judaro-feedback/SKILL.md` — the `/judaro-feedback` skill (beta feedback; also model-invocable).
   Named `judaro-feedback` (not `feedback`) so its bare command doesn't collide with Claude's built-in
-  `/feedback` and stays visible in the `/` menu. Prefers the server's pre-filled `feedback.report_url`,
-  else the static Google Form URL baked in here (public-safe — the form link is non-secret).
+  `/feedback` and stays visible in the `/` menu. Builds a pre-filled form link from conversation
+  context (approved summary, skill, report type) on top of the server's `feedback.report_url` when
+  present — the server side carries the verified registered email — else from the base form URL, and
+  always hands it over as a Markdown link. The form URL + entry IDs are public-safe (visible in the
+  form's own HTML); the field map is mastered in the server repo's `docs/beta-feedback.md` — keep the
+  two in step.
 - `personalization.example.md` — optional local customization (copy to `personalization.md`).
 
 ## Invariants
