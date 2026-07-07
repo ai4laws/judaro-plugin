@@ -5,6 +5,14 @@ Notable changes to the Judaro client plugin. See `git log` for full history.
 To update: in Claude Code run `/plugin marketplace update ai4law-legal-skills`
 then `/plugin update judaro@ai4law-legal-skills` (or use the `/plugin` → Installed → Update menu).
 
+## 0.5.0 — feedback command rename
+### Changed
+- **Renamed the feedback command `feedback` → `judaro-feedback`** — invoke **`/judaro-feedback`**. The
+  old bare name collided with Claude's built-in `/feedback`, so on Claude Desktop the plugin command
+  never appeared in the `/` autocomplete menu (it only worked if you typed the namespaced
+  `/judaro:feedback`). The new name is collision-free and shows in the menu. Model-invocation and the
+  form itself are unchanged.
+
 ## 0.4.0 — beta feedback
 ### Added
 - **`/judaro:feedback` skill** (`skills/feedback/`) — a one-step, Hebrew-facing way to report a
