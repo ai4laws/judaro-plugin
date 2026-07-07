@@ -1,5 +1,5 @@
 ---
-name: feedback
+name: judaro-feedback
 description: >-
   Report a problem with — or send feedback about — Judaro (the hosted Israeli-legal
   skills service). Use when the user says a legal result or skill was wrong, outdated,
