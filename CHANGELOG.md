@@ -5,6 +5,15 @@ Notable changes to the Judaro client plugin. See `git log` for full history.
 To update: in Claude Code run `/plugin marketplace update ai4law-legal-skills`
 then `/plugin update judaro@ai4law-legal-skills` (or use the `/plugin` → Installed → Update menu).
 
+## 0.6.0 — pre-filled feedback links
+### Changed
+- **`/judaro-feedback` now pre-fills the form from the conversation.** It starts from the server's
+  `feedback.report_url` when one appeared (skill, environment and your verified registered email
+  already filled) and adds what it learned in-chat — your approved one-line summary, what you
+  expected, the report type — or builds the same pre-filled link itself when no server link exists.
+  The link is always handed over as a Markdown link instead of a raw URL. Nothing is transmitted
+  until you review and submit the form yourself.
+
 ## 0.5.0 — feedback command rename
 ### Changed
 - **Renamed the feedback command `feedback` → `judaro-feedback`** — invoke **`/judaro-feedback`**. The

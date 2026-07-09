@@ -104,8 +104,9 @@ versioned together. A standalone connector exposes only the raw MCP tools, witho
 Judaro is in **beta** — please tell us whenever a result is wrong, outdated, missing, or just not
 what you expected. It takes a moment and directly improves what you get.
 - Run **`/judaro-feedback`** any time, or just say (in Hebrew or English) that an answer was wrong
-  or that you want to report something — Claude will offer to summarize the issue and hand you a
-  link to a short form.
+  or that you want to report something — Claude will summarize the issue with you and hand you a
+  **pre-filled** link to a short form: your approved summary, the skill involved and your
+  registered email are already filled in, so you just review, adjust, and send.
 - The server also reminds you of this when you load a skill or hit an access error, so the option
   is always at hand without nagging.
 - **Privacy:** feedback never includes your client/matter details unless you explicitly add them,
