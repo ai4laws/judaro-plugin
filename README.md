@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/judaro-logo.png" alt="Judaro" width="88" height="88">
+</p>
+
 # Judaro — Legal Skills client plugin (AI4LAW)
 
 A **thin** Claude Code plugin that connects to the hosted AI4LAW Legal Skills MCP server.
