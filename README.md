@@ -31,8 +31,8 @@ gated at the server by your authenticated account, not by who can read this conn
 
 2. **Install the plugin** in Claude Code:
    ```text
-   /plugin marketplace add ai4laws/legal-skills-plugin
-   /plugin install judaro@ai4law-legal-skills
+   /plugin marketplace add ai4laws/judaro-plugin
+   /plugin install judaro@judaro
    ```
 
 3. **Restart Claude Code** so the connector loads (approve the `judaro` server if prompted).

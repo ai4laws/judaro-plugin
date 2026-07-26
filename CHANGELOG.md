@@ -2,8 +2,19 @@
 
 Notable changes to the Judaro client plugin. See `git log` for full history.
 
-To update: in Claude Code run `/plugin marketplace update ai4law-legal-skills`
-then `/plugin update judaro@ai4law-legal-skills` (or use the `/plugin` → Installed → Update menu).
+To update: in Claude Code run `/plugin marketplace update judaro`
+then `/plugin update judaro@judaro` (or use the `/plugin` → Installed → Update menu).
+
+## Unreleased — marketplace renamed to `judaro`
+### Changed
+- **The marketplace is now called `judaro`** (was `ai4law-legal-skills`), so it reads as *Judaro* in
+  the `/plugin` menu and installs are `/plugin install judaro@judaro`.
+
+  **Existing installs need a one-time re-add** — a marketplace rename is not picked up by
+  `/plugin marketplace update`. Remove the old marketplace, add it again, then install:
+  `/plugin marketplace remove ai4law-legal-skills`, `/plugin marketplace add ai4laws/judaro-plugin`,
+  `/plugin install judaro@judaro`, then restart Claude. The connector name (`judaro`) and its URL
+  are unchanged; if the sign-in doesn't carry over, run `/mcp` → `judaro` → **Authenticate** once.
 
 ## 0.6.0 — pre-filled feedback links
 ### Changed
