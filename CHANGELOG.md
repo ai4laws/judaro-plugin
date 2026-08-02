@@ -5,7 +5,7 @@ Notable changes to the Judaro client plugin. See `git log` for full history.
 To update: in Claude Code run `/plugin marketplace update judaro`
 then `/plugin update judaro@judaro` (or use the `/plugin` → Installed → Update menu).
 
-## Unreleased — marketplace renamed to `judaro`
+## Marketplace 0.4.0 — renamed to `judaro`
 ### Changed
 - **The marketplace is now called `judaro`** (was `ai4law-legal-skills`), so it reads as *Judaro* in
   the `/plugin` menu and installs are `/plugin install judaro@judaro`.
