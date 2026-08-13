@@ -121,3 +121,8 @@ The server is **read-only** content delivery. Your matter/client data never leav
 machine — keep it in local working files and in `personalization.md`, not on the server.
 Signing in shares only your verified email (used to look up your entitlements); no matter
 data is ever sent to the server.
+
+## Terms & privacy policy
+Use of Judaro is governed by AI4LAW's [Terms of Use & License](https://judaro.com/terms.html)
+and [Privacy Policy](https://judaro.com/privacy.html). Signing in ("Connect") to the `judaro`
+connector — or otherwise using the service — constitutes acceptance of both.
