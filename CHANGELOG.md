@@ -5,6 +5,15 @@ Notable changes to the Judaro client plugin. See `git log` for full history.
 To update: in Claude Code run `/plugin marketplace update judaro`
 then `/plugin update judaro@judaro` (or use the `/plugin` → Installed → Update menu).
 
+## 0.5.1 — the unavailability notice fires only when Judaro is really unreachable
+### Fixed
+- The plugin's grounding reminder («the server errored or is unreachable») used to appear on **every**
+  failed Judaro tool call — including ordinary responses from a healthy server, such as access and
+  entitlement messages, which it drowned out and sometimes contradicted. It now appears only when the
+  server truly could not be reached (connection error / timeout) or the sign-in was rejected
+  (authorization), each with clearer wording: check your connection and retry shortly, or sign in
+  again (`/mcp` → `judaro` → **Authenticate**, or the connector's **Connect** button).
+
 ## Marketplace 0.4.0 — renamed to `judaro`
 ### Changed
 - **The marketplace is now called `judaro`** (was `ai4law-legal-skills`), so it reads as *Judaro* in
