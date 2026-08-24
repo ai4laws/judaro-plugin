@@ -25,6 +25,15 @@ then `/plugin update judaro@judaro` (or use the `/plugin` → Installed → Upda
   The link is always handed over as a Markdown link instead of a raw URL. Nothing is transmitted
   until you review and submit the form yourself.
 
+### Fixed
+- **The «server errored or is unreachable» notice now appears only when Judaro is really
+  unreachable.** It used to fire on every failed Judaro tool call — including ordinary responses
+  from a healthy server, such as access and entitlement messages, which it drowned out and
+  sometimes contradicted. It now fires only on a genuine connection failure / timeout or a
+  rejected sign-in (authorization), each with clearer wording: check your connection and retry
+  shortly, or sign in again (`/mcp` → `judaro` → **Authenticate**, or the connector's **Connect**
+  button).
+
 ## 0.5.0 — feedback command rename
 ### Changed
 - **Renamed the feedback command `feedback` → `judaro-feedback`** — invoke **`/judaro-feedback`**. The
