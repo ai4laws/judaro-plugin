@@ -16,6 +16,24 @@ then `/plugin update judaro@judaro` (or use the `/plugin` → Installed → Upda
   `/plugin install judaro@judaro`, then restart Claude. The connector name (`judaro`) and its URL
   are unchanged; if the sign-in doesn't carry over, run `/mcp` → `judaro` → **Authenticate** once.
 
+## 0.6.0 — pre-filled feedback links
+### Changed
+- **`/judaro-feedback` now pre-fills the form from the conversation.** It starts from the server's
+  `feedback.report_url` when one appeared (skill, environment and your verified registered email
+  already filled) and adds what it learned in-chat — your approved one-line summary, what you
+  expected, the report type — or builds the same pre-filled link itself when no server link exists.
+  The link is always handed over as a Markdown link instead of a raw URL. Nothing is transmitted
+  until you review and submit the form yourself.
+
+### Fixed
+- **The «server errored or is unreachable» notice now appears only when Judaro is really
+  unreachable.** It used to fire on every failed Judaro tool call — including ordinary responses
+  from a healthy server, such as access and entitlement messages, which it drowned out and
+  sometimes contradicted. It now fires only on a genuine connection failure / timeout or a
+  rejected sign-in (authorization), each with clearer wording: check your connection and retry
+  shortly, or sign in again (`/mcp` → `judaro` → **Authenticate**, or the connector's **Connect**
+  button).
+
 ## 0.5.0 — feedback command rename
 ### Changed
 - **Renamed the feedback command `feedback` → `judaro-feedback`** — invoke **`/judaro-feedback`**. The
