@@ -3,6 +3,8 @@ personalization.md
 
 # Local-only Claude Code dev context (per-clone, agent-facing) — never commit
 CLAUDE.local.md
+CLAUDE.md
+AGENTS.md
 
 # macOS / exFAT AppleDouble sidecar files
 ._*
