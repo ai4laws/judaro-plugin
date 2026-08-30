@@ -2,16 +2,11 @@
   <img src="assets/judaro-logo.png" alt="Judaro" width="88" height="88">
 </p>
 
-# Judaro — Legal Skills client plugin (AI4LAW)
+# Judaro — client plugin
 
-A **thin** Claude Code plugin that connects to the hosted AI4LAW Legal Skills MCP server.
+A **thin** Claude Code plugin that connects to the hosted Judaro MCP server.
 It ships **no legal content** — every skill, playbook, knowledge doc and reference is served
-from the central server based on your account's entitlements, so updates propagate instantly
-and nothing is stored locally.
-
-This repository **is** the plugin (the canonical, client-installable home). The server lives
-in a separate private repo; this one is safe to be public because access to actual content is
-gated at the server by your authenticated account, not by who can read this connector.
+from the central server based on your account's entitlements, so updates propagate instantly.
 
 ## What's inside
 - `.mcp.json` — registers the hosted Legal Skills server (HTTP). Connecting is **keyless**:
@@ -26,28 +21,25 @@ gated at the server by your authenticated account, not by who can read this conn
 
 ## Install — individual user (default)
 
-1. **Ask AI4LAW to provision your account.** Access is by invitation — AI4LAW registers your
-   email and the packages (legal domains) you're entitled to. You'll sign in with that same email.
-
-2. **Install the plugin** in Claude Code:
+1. **Install the plugin** in Claude Code:
    ```text
    /plugin marketplace add ai4laws/judaro-plugin
    /plugin install judaro@judaro
    ```
 
-3. **Restart Claude Code** so the connector loads (approve the `judaro` server if prompted).
+2. **Restart Claude Code** so the connector loads (approve the `judaro` server if prompted).
 
-4. **Connect — sign in once.** Run `/mcp`, select **`judaro`**, and choose
+3. **Connect — sign in once.** Run `/mcp`, select **`judaro`**, and choose
    **Authenticate**. A browser window opens — sign in with your AI4LAW-registered email and
    approve access. (Claude may also offer to connect automatically the first time you ask a
    legal question.) The login is remembered, so you only do this once per machine.
 
-5. **Verify it worked:** ask, in plain language, *"List the legal domains available to me"*
+4. **Verify it worked:** ask, in plain language, *"List the legal domains available to me"*
    (or in Hebrew, *"אילו תחומי משפט זמינים לי?"*). A list of domains means you're connected.
    A "not provisioned" or authorization error usually means your account isn't set up yet, or
    you signed in with a different email than the one AI4LAW registered — contact AI4LAW.
 
-6. *(optional)* `cp personalization.example.md personalization.md` and fill in firm/style
+5. *(optional)* `cp personalization.example.md personalization.md` and fill in firm/style
    preferences — they stay on your machine.
 
 ## Install — for an organization
