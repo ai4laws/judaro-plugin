@@ -1,18 +1,18 @@
 {
   "name": "judaro",
   "owner": {
-    "name": "AI4LAW / Lapidot Weinberger",
-    "email": "lapidot@ai4law.co.il"
+    "name": "Judaro",
+    "email": "hello@judaro.com"
   },
   "metadata": {
-    "description": "Judaro marketplace — the thin Judaro client connector for the hosted AI4LAW Legal Skills MCP server.",
+    "description": "Judaro marketplace — the thin Judaro client plugin for working with the Judaro MCP server for Israeli legal work.",
     "version": "0.4.0"
   },
   "plugins": [
     {
       "name": "judaro",
       "source": ".",
-      "description": "Judaro — client connector for the hosted AI4LAW Legal Skills MCP server. Discovers and loads entitlement-gated Israeli-legal skills, playbooks, knowledge and references from the central server. Ships no content; updates propagate from the server.",
+      "description": "Judaro — client plugin for working with the Judaro MCP server. Helps discover and load Israeli-legal skills, playbooks, knowledge and references from the central server. Ships no content; updates propagate from the server.",
       "category": "legal"
     }
   ]
