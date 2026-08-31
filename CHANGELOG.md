@@ -7,15 +7,14 @@ then `/plugin update judaro@judaro` (or use the `/plugin` → Installed → Upda
 
 ## Marketplace 0.4.0 — renamed to `judaro`
 ### Changed
-- **The marketplace was renamed to `judaro`**, so it reads as *Judaro* in the `/plugin` menu and
-  installs are `/plugin install judaro@judaro`.
+- **The marketplace is now called `judaro`** (was `ai4law-legal-skills`), so it reads as *Judaro* in
+  the `/plugin` menu and installs are `/plugin install judaro@judaro`.
 
   **Existing installs need a one-time re-add** — a marketplace rename is not picked up by
-  `/plugin marketplace update`. Remove the old marketplace (run `/plugin marketplace list` to see
-  its current name if you don't remember it), add it again with `/plugin marketplace add
-  ai4laws/judaro-plugin`, then `/plugin install judaro@judaro` and restart Claude. The connector
-  name (`judaro`) and its URL are unchanged; if the sign-in doesn't carry over, run `/mcp` →
-  `judaro` → **Authenticate** once.
+  `/plugin marketplace update`. Remove the old marketplace, add it again, then install:
+  `/plugin marketplace remove ai4law-legal-skills`, `/plugin marketplace add ai4laws/judaro-plugin`,
+  `/plugin install judaro@judaro`, then restart Claude. The connector name (`judaro`) and its URL
+  are unchanged; if the sign-in doesn't carry over, run `/mcp` → `judaro` → **Authenticate** once.
 
 ## 0.6.0 — pre-filled feedback links
 ### Changed
