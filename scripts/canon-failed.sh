@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# AI4LAW legal-canon guardrail — PostToolUseFailure hook.
+# Judaro legal-canon guardrail — PostToolUseFailure hook.
 #
 # Fires ONLY when a legal-skills MCP tool call failed because the Judaro server could not
 # be reached (connection error / timeout) or rejected the account's authorization

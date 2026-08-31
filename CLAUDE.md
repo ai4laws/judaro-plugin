@@ -6,7 +6,7 @@ Owner: ai4laws
 Project: Legal Skills MCP
 
 ## Claude Code
-- **Board.** The org board above uses an `Owner` field (Roy / Lapidot / Shared); act only on your
+- **Board.** The org board above uses an `Owner` field per assignee; act only on your
   lane and don't flip another's status. Manage it with the `/projects` skill.
 - **Per-person local context.** `@~/lsmcp-local.md` (imported below) — each machine keeps its own.
 - **Memory is local scratch only** — machine/person-specific (toolchain quirks, file/key *locations*

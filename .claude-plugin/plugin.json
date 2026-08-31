@@ -1,7 +1,7 @@
 {
   "name": "judaro",
   "version": "0.6.0",
-  "description": "Judaro — client connector for the hosted AI4LAW Legal Skills MCP server. Helps discover and load entitlement-gated Israeli-legal skills, playbooks, knowledge and references from the central server.",
+  "description": "Judaro — client connector for the hosted Judaro MCP server. Helps discover and load entitlement-gated Israeli-legal skills, playbooks, knowledge and references from the central server.",
   "author": {
     "name": "Judaro",
     "email": "hello@judaro.com"

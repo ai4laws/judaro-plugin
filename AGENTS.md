@@ -1,6 +1,6 @@
 # Judaro — Legal Skills client plugin
 
-A **thin** Claude Code plugin that connects to the hosted AI4LAW Legal Skills MCP server. It ships
+A **thin** Claude Code plugin that connects to the hosted Judaro MCP server. It ships
 **no legal content** — every skill, playbook, knowledge doc and reference is served from the central
 server based on your account's entitlements. **This repo is the plugin's canonical home** (not the
 server repo). Install/use detail: `README.md`.
