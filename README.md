@@ -30,14 +30,15 @@ from the central server based on your account's entitlements, so updates propaga
 2. **Restart Claude Code** so the connector loads (approve the `judaro` server if prompted).
 
 3. **Connect — sign in once.** Run `/mcp`, select **`judaro`**, and choose
-   **Authenticate**. A browser window opens — sign in with your AI4LAW-registered email and
+   **Authenticate**. A browser window opens — sign in with your registered email and
    approve access. (Claude may also offer to connect automatically the first time you ask a
    legal question.) The login is remembered, so you only do this once per machine.
 
 4. **Verify it worked:** ask, in plain language, *"List the legal domains available to me"*
    (or in Hebrew, *"אילו תחומי משפט זמינים לי?"*). A list of domains means you're connected.
    A "not provisioned" or authorization error usually means your account isn't set up yet, or
-   you signed in with a different email than the one AI4LAW registered — contact AI4LAW.
+   you signed in with a different email than the one that was registered — contact
+   hello@judaro.com.
 
 5. *(optional)* `cp personalization.example.md personalization.md` and fill in firm/style
    preferences — they stay on your machine.
@@ -80,7 +81,7 @@ copy** of it and point the admin console at that.
    git fetch upstream && git merge upstream/main && git push origin main
    ```
 
-Entitlements are unchanged: each user signs in with their AI4LAW email and sees only what their
+Entitlements are unchanged: each user signs in with their registered email and sees only what their
 account is entitled to.
 
 **Use the plugin, not a bare connector.** You *could* add `https://mcp.judaro.com/mcp` as a
@@ -115,6 +116,6 @@ Signing in shares only your verified email (used to look up your entitlements); 
 data is ever sent to the server.
 
 ## Terms & privacy policy
-Use of Judaro is governed by AI4LAW's [Terms of Use & License](https://judaro.com/terms.html)
+Use of this plugin is governed by Judaro's [Terms of Use & License](https://judaro.com/terms.html)
 and [Privacy Policy](https://judaro.com/privacy.html). Signing in ("Connect") to the `judaro`
 connector — or otherwise using the service — constitutes acceptance of both.
