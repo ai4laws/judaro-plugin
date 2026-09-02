@@ -9,7 +9,7 @@
 # push DIFF (not full history). We deliberately do not configure a full-history
 # rescan in the gating job.
 
-title = "legal-skills-plugin gitleaks config"
+title = "judaro-plugin gitleaks config"
 
 # Inherit all of gitleaks' default rules (AWS keys, GitHub tokens, private keys,
 # generic high-entropy assignments, etc.) and add ours below.
