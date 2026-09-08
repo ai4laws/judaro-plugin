@@ -22,7 +22,7 @@ session* from the `legal-skills` MCP tools (`list_domains` → `list_skills` →
 the `get_playbook` / `get_knowledge` / `get_reference` / `download_file` calls the skill names).
 If you have not, you do not yet have a basis to answer.
 
-## Three situations — what to do
+## Four situations — what to do
 
 **1. The server is unavailable / a tool errors / the connector is missing.**
 You cannot reach the canon. Do **not** answer from your own knowledge and do **not** fabricate.
@@ -40,7 +40,15 @@ names the package(s) that unlock it. Do **not** substitute your own legal knowle
 user what is missing, that it requires a package they don't currently have, and relay the
 package name(s) the server offered so they can obtain access.
 
-**3. The canon loaded fine and a relevant skill is available.**
+**3. The account is known but access is withheld (lapsed subscription, moderator block, temporary pause).**
+The credential is fine — the server refused on the standing of the account, and its message already
+carries the way forward: a renewal/upgrade link when the access period has ended, an address to
+contact for a moderator block, or a note that a pause lifts on its own. Relay that message to the
+user as it stands, links and addresses included. Do **not** tell them to sign in again — it restores
+nothing here — and do **not** retry unless the server said access resumes automatically. As in every
+other situation, do not substitute your own legal knowledge meanwhile.
+
+**4. The canon loaded fine and a relevant skill is available.**
 Proceed: follow the loaded skill's instructions, make the get_* calls it names, and ground every
 legal statement in what those tools return. If no skill matches the task, say so plainly (name
 the closest domain) rather than improvising legal content.
