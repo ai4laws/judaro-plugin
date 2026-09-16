@@ -26,7 +26,7 @@ jobs:
         # three JSON files, so a parse check is the meaningful gate here.
         run: |
           set -euo pipefail
-          for f in .mcp.json .claude-plugin/marketplace.json .claude-plugin/plugin.json; do
+          for f in .mcp.json .claude-plugin/marketplace.json .claude-plugin/plugin.json hooks/hooks.json; do
             echo "Validating $f"
             python3 -c "import json,sys; json.load(open(sys.argv[1]))" "$f"
           done
