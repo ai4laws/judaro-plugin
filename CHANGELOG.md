@@ -5,6 +5,17 @@ Notable changes to the Judaro client plugin. See `git log` for full history.
 To update: in Claude Code run `/plugin marketplace update judaro`
 then `/plugin update judaro@judaro` (or use the `/plugin` → Installed → Update menu).
 
+## 0.6.1 — the right remedy when a subscription lapses
+### Fixed
+- **A lapsed subscription, a moderator block or a temporary pause no longer produces sign-in
+  advice.** When Judaro withholds access over the standing of the account rather than a bad
+  credential, its own message already says what to do — renew or upgrade at the link it gives,
+  contact us about a block, or simply wait out a pause that lifts by itself. The connection
+  guardrail used to talk over that with "sign in to Judaro again", which fixes none of them and
+  buried the renewal link. It now relays what the server said instead. Genuine sign-in failures
+  still get the sign-in instructions, and the "don't answer Israeli law from memory" grounding
+  is unchanged in every case.
+
 ## Marketplace 0.4.0 — renamed to `judaro`
 ### Changed
 - **The marketplace is now called `judaro`** (was `ai4law-legal-skills`), so it reads as *Judaro* in
