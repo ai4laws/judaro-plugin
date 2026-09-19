@@ -1,0 +1,46 @@
+Judaro Plugin — Proprietary License
+
+Copyright (c) 2026 AI4LAW / Lapidot Weinberger. All rights reserved.
+
+This license covers the Judaro plugin (product site: https://judaro.com):
+the client-connector code in this repository. It does not cover the hosted
+AI4LAW Legal Skills service that the plugin connects to.
+
+1. What you may do
+   (a) View and clone this repository.
+   (b) Install and run the plugin, as published, with Claude Code or other
+       Claude products, for use with the hosted AI4LAW service — including
+       the documented local configuration (for example, a local
+       personalization file).
+   (c) Organizations deploying the plugin through the Claude admin console
+       may keep a private, internal copy of this repository, change the
+       plugin source pointer in .claude-plugin/marketplace.json as
+       documented in the README, and keep that copy in sync with this
+       repository. Internal-use copies for that purpose are expressly
+       permitted.
+   (d) Fork this repository on GitHub, as GitHub's Terms of Service
+       permit — for example, to propose a change.
+
+2. What you may not do
+   Except as permitted in section 1, you may not:
+   (a) publicly redistribute, republish, or sell the plugin or any
+       modified version of it;
+   (b) publish derivative plugins based on this repository; or
+   (c) use the "Judaro" or "AI4LAW" names, logos, or other marks. This
+       license grants no trademark rights.
+
+3. The service is separate
+   The plugin ships no legal content. Legal skills and knowledge are
+   delivered by the hosted AI4LAW service to signed-in, authorized
+   accounts and are governed separately by the Judaro Terms of Service
+   (https://judaro.com/terms). This license grants no right of access to
+   the service; an authorized AI4LAW account is required.
+
+4. No warranty; limitation of liability
+   The plugin is provided "AS IS", without warranties of any kind, express
+   or implied. To the maximum extent permitted by law, AI4LAW and Lapidot
+   Weinberger are not liable for any damages arising from the use of, or
+   inability to use, the plugin.
+
+5. Contact
+   Licensing questions: lapidot@ai4law.co.il
